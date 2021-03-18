@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "run": "ts-node-dev --respawn ./src/app.ts",
+    "start": "ts-node ./out/src/app.js",
     "test": "jest"
   },
   "repository": {
