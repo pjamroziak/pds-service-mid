@@ -1,29 +1,33 @@
 import { PersonalDataModel } from "../models/personalData.model";
 import { TpaModel } from "../models/tpaGorest.model";
+import { Converter } from "./converter";
 
-const INDEX_NOT_FOUND: number = -1;
+export class TpaToPersonalDataConverter implements Converter<TpaModel, PersonalDataModel> {
 
-export const convertTpaModelToPersonalData = (tpaModel: TpaModel): PersonalDataModel | null => {
-    const loginFromTpaModel: string = createLoginFromEmailAddress(tpaModel.email);
-    if(loginFromTpaModel !== "") {
-        return new PersonalDataModel(
-            tpaModel.name,
-            tpaModel.email,
-            loginFromTpaModel,
-            tpaModel.status
-        );
-    }
-    else {
-        return null;
-    }
-}
+    INDEX_NOT_FOUND: number = -1;
 
-const createLoginFromEmailAddress = (email: string): string => {
-    const indexOfAtSign: number = email.indexOf("@");
-    if(indexOfAtSign != INDEX_NOT_FOUND) {
-       return email.substring(0, indexOfAtSign); 
+    convert(model: TpaModel): PersonalDataModel {
+        const loginFromTpaModel: string = this.createLoginFromEmailAddress(model.email);
+        if(loginFromTpaModel !== "") {
+            return new PersonalDataModel(
+                model.name,
+                model.email,
+                loginFromTpaModel,
+                model.status
+            );
+        }
+        else {
+            throw new Error("can't extract login from email addreess");
+        }
     }
-    
-    return "";
+
+    private createLoginFromEmailAddress(email: string): string {
+        const indexOfAtSign: number = email.indexOf("@");
+        if(indexOfAtSign != this.INDEX_NOT_FOUND) {
+           return email.substring(0, indexOfAtSign); 
+        }
+        
+        return "";
+    }
 }
 
