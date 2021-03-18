@@ -1,15 +1,12 @@
 import express from "express"
-import dotenv from "dotenv"
 import { commandsRouter } from "./routes/v1/commands.route";
-
-dotenv.config();
+import * as config from "./config";
 
 const app = express();
-const appBaseUrl: string = process.env.EXPRESS_ROUTE_BASE  + "/" + process.env.EXPRESS_ROUTE_VERSION;
 
 app.use(express.json());
-app.use(appBaseUrl, commandsRouter);
+app.use(config.EXPRESS_ROUTE_BASE + config.EXPRESS_ROUTE_VERSION, commandsRouter);
 
-app.listen(process.env.EXPRESS_PORT, () => {
-    console.log('App listen on ' + process.env.EXPRESS_PORT);
+app.listen(config.EXPRESS_PORT, () => {
+    console.log('App listen on ' + config.EXPRESS_PORT);
 });
