@@ -1,0 +1,41 @@
+{
+  "name": "pds-service-mid",
+  "version": "1.0.0",
+  "description": "Personal Data Service for job application in Codetain.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "tsc",
+    "run": "ts-node-dev --respawn ./src/app.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjamroziak/pds-service-mid.git"
+  },
+  "author": "Pawel Jamroziak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pjamroziak/pds-service-mid/issues"
+  },
+  "homepage": "https://github.com/pjamroziak/pds-service-mid#readme",
+  "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.20",
+    "@types/joi": "^17.2.3",
+    "@types/node-fetch": "^2.5.8",
+    "@types/uuid": "^8.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-joi-validation": "^5.0.0",
+    "jest": "^26.6.3",
+    "joi": "^17.4.0",
+    "node-fetch": "^2.6.1",
+    "ts-jest": "^26.5.3",
+    "ts-node-dev": "^1.1.6",
+    "uuid": "^8.3.2"
+  }
+}
